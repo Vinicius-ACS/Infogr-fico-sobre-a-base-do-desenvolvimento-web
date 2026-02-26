@@ -21,3 +21,4 @@ SOMMERVILLE, Ian. Engenharia de Software. 10. ed. São Paulo: Pearson Education 
 PRESSMAN, Roger S.; LOWE, David. Engenharia Web: Uma Abordagem do Profissional. Rio de Janeiro: LTC, 2009.  
 https://home.cern/science/computing/birth-web/short-history-web
 https://cgi.br/sobre/
+https://salaonline.ceub.br/pluginfile.php/240784/mod_resource/content/1/Apresentacao_Aula2_DesenvolvimentoWeb_HistoriaeevolucaoWeb_Kadidja_19fev26.pdf
