@@ -8,7 +8,8 @@
 
 # 🚩Infográfico sobre a base do Desenvolvimento Web🚩
 
-<img width="800" height="2000" alt="Trabalho Desenvolvimento Web" src="https://github.com/user-attachments/assets/50008e9a-b430-4871-b1ef-33a8c80e7ebb" />
+![Trabalho Desenvolvimento Web (1)](https://github.com/user-attachments/assets/fd57121a-aa3d-4970-b079-acd83a847b1e)
+
 
 # 🥸Participantes: 
 Ian Guilherme Oliveira Clauhs - 22511625  
