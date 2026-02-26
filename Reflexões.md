@@ -12,3 +12,5 @@ Com base nas pesquisas para confeccionar o infográfico, pude perceber que a his
 
 
 # Reflexão Individual do Ian
+
+A Web transformou a Engenharia de Software ao deslocar o foco de aplicações locais e estáticas para sistemas distribuídos e globais, substituindo a entrega física pela atualização contínua em nuvem. Baseada nos pilares de padronização (como o W3C) e na abertura de protocolos (como o TCP/IP e o HTTP), ela permitiu que o software deixasse de ser um produto isolado para se tornar um serviço onipresente, impulsionando a colaboração em código aberto e metodologias ágeis que definem o desenvolvimento moderno.
