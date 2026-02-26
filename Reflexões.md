@@ -5,3 +5,8 @@ para compartilhar informações científicas, mas rapidamente ultrapassou esse o
 A criação do World Wide Web Consortium (W3C) também demonstrou grande importância da padronização para garantir organização e evolução contínua. Além disso, o surgimento de tecnologias como o JavaScript
 mostrou como a inovação tornou a Internet mais dinâmica e interativa. Refletindo sobre esse período, concluo que pequenas iniciativas podem gerar impactos globais quando há visão, colaboração e acesso
 aberto ao conhecimento. Esse momento da história estabeleceu as bases do mundo digital em que vivemos hoje.
+
+# Reflexão Individual do Vinícius
+
+
+# Reflexão Individual do Ian
