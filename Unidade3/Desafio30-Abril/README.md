@@ -1,6 +1,6 @@
 # O Rei da Pizza - Asa Norte
 
-Site Original : <a href="https://oreidapizzabsb.ola.click/">O rei da pizza</a>
+Site Original : <a href="[https://oreidapizzabsb.ola.click/](https://visionary-valkyrie-bca156.netlify.app/)">O rei da pizza</a>
 
 Melhoria do site institucional e cardápio digital desenvolvido para a pizzaria **O Rei da Pizza - Asa Norte**, com foco em apresentação moderna, navegação simples, acessibilidade, semântica HTML e boa experiência para clientes em dispositivos móveis, tablets e desktop.
 
