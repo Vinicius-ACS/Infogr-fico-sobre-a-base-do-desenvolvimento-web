@@ -317,3 +317,18 @@ No projeto em questão foi feito o uso das seguintes AIs
 - Ian Guilherme Oliveira Clauhs 22511625
 - jorge Murilo Paiva dos Santos 22510162
 
+## Pesquisa do Ian sobre Vue.js
+
+# Vue.js
+
+Vue.js é um framework JavaScript progressivo para construir interfaces de usuário.  
+Ele foi criado por Evan You em 2014 e é open source.  
+O Vue usa uma arquitetura baseada em componentes, tornando o código mais modular.  
+Possui sistema reativo, atualizando a interface automaticamente quando os dados mudam.  
+É fácil de aprender para quem já conhece HTML, CSS e JavaScript.  
+Suporta Single Page Applications (SPA) e integração gradual em projetos existentes.  
+Possui ferramentas como Vue Router, Pinia e Vite para gerenciar rotas, estado e builds.  
+O Vue é leve, flexível e tem ótima documentação oficial.  
+É usado em dashboards, e-commerces e interfaces interativas.  
+Apesar de menor que React em adoção, tem comunidade ativa e crescente.
+
