@@ -42,6 +42,7 @@
 </header>
 
 <main id="cardapio" tabindex="-1">
+  <div id="vue-cardapio" v-cloak>
   <section class="menu-hero" aria-labelledby="menu-title">
     <div class="container menu-shell">
       <div class="restaurant-panel">
@@ -50,149 +51,114 @@
           <h1 id="menu-title" class="menu-title">Cardápio</h1>
           <p class="lead">Escolha seus sabores, adicione ao pedido e finalize pelo WhatsApp.</p>
         </div>
+
         <a class="btn btn-outline" href="index.html">Voltar à home</a>
       </div>
 
-      <form class="search-card" role="search" onsubmit="return false">
+      <form class="search-card" role="search" @submit.prevent>
         <label for="search">Buscar produto</label>
-        <input id="search" type="search" autocomplete="off" placeholder="Ex.: calabresa, quatro queijos, margherita, chocolate...">
+        <input
+          id="search"
+          type="search"
+          autocomplete="off"
+          placeholder="Ex.: calabresa, quatro queijos, margherita, chocolate..."
+          v-model.trim="searchTerm"
+          @input="announceResults"
+        >
       </form>
     </div>
   </section>
 
   <div class="category-bar">
     <div class="container tabs" role="group" aria-label="Categorias do cardápio">
-      <button class="tab active" type="button" data-filter="todos">Todos</button>
-      <button class="tab" type="button" data-filter="tradicionais">Tradicionais</button>
-      <button class="tab" type="button" data-filter="especiais">Especiais</button>
-      <button class="tab" type="button" data-filter="doces">Doces</button>
+      <button
+        v-for="category in categories"
+        :key="category.value"
+        class="tab"
+        type="button"
+        :class="{ active: currentFilter === category.value }"
+        :aria-pressed="String(currentFilter === category.value)"
+        @click="setFilter(category.value)"
+      >
+        {{ category.label }}
+      </button>
     </div>
   </div>
 
   <div class="container menu-layout">
     <section aria-label="Produtos do cardápio">
-      <div class="empty-state" id="empty-state">Nenhum produto encontrado. Tente outro termo ou categoria.</div>
-
-      <h2 class="group-title" id="tradicionais">Pizzas tradicionais</h2>
-      <div class="products">
-        <article class="product-card" data-category="tradicionais" data-search="pizza calabresa mussarela cebola oregano molho tomate">
-          <img src="assets/pizzas/calabresa.webp" alt="Pizza de calabresa com cebola" loading="lazy">
-          <div>
-            <span class="product-chip">Clássica</span>
-            <h3>Pizza Calabresa</h3>
-            <p>Molho, mussarela, calabresa fatiada, cebola e orégano.</p>
-            <div class="product-bottom"><span class="price">R$ 45,00</span><button class="add" type="button" aria-label="Adicionar Pizza Calabresa">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="tradicionais" data-search="pizza mussarela queijo molho tomate oregano muçarela">
-          <img src="assets/pizzas/mussarela.webp" alt="Pizza de mussarela" loading="lazy">
-          <div>
-            <span class="product-chip">Tradicional</span>
-            <h3>Pizza Mussarela</h3>
-            <p>Molho de tomate, mussarela especial e orégano.</p>
-            <div class="product-bottom"><span class="price">R$ 40,00</span><button class="add" type="button" aria-label="Adicionar Pizza Mussarela">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="tradicionais" data-search="pizza margherita mussarela tomate manjericao manjericão molho">
-          <img src="assets/pizzas/margherita.webp" alt="Pizza Margherita com tomate e manjericão" loading="lazy">
-          <div>
-            <span class="product-chip">Leve</span>
-            <h3>Pizza Margherita</h3>
-            <p>Mussarela, tomate fresco, manjericão e molho da casa.</p>
-            <div class="product-bottom"><span class="price">R$ 42,00</span><button class="add" type="button" aria-label="Adicionar Pizza Margherita">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="tradicionais" data-search="pizza milho mussarela milho verde oregano">
-          <img src="assets/pizzas/milho.webp" alt="Pizza de milho" loading="lazy">
-          <div>
-            <span class="product-chip">Suave</span>
-            <h3>Pizza Milho</h3>
-            <p>Mussarela, milho verde, molho de tomate e orégano.</p>
-            <div class="product-bottom"><span class="price">R$ 43,00</span><button class="add" type="button" aria-label="Adicionar Pizza Milho">Adicionar</button></div>
-          </div>
-        </article>
+      <div class="empty-state" id="empty-state" v-show="filteredProducts.length === 0">
+        Nenhum produto encontrado. Tente outro termo ou categoria.
       </div>
 
-      <h2 class="group-title" id="especiais">Pizzas especiais</h2>
-      <div class="products">
-        <article class="product-card" data-category="especiais" data-search="pizza a moda do rei especial presunto milho cebola tomate">
-          <img src="assets/pizzas/a-moda-do-rei.webp" alt="Pizza À Moda do Rei" loading="lazy">
-          <div>
-            <span class="product-chip highlight">Da casa</span>
-            <h3>À Moda do Rei</h3>
-            <p>Uma combinação generosa de ingredientes selecionados, no padrão da casa.</p>
-            <div class="product-bottom"><span class="price">R$ 56,00</span><button class="add" type="button" aria-label="Adicionar À Moda do Rei">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="especiais" data-search="pizza calabresa especial calabresa cebola catupiry mussarela">
-          <img src="assets/pizzas/calabresa-especial.webp" alt="Pizza Calabresa Especial" loading="lazy">
-          <div>
-            <span class="product-chip highlight">Mais pedida</span>
-            <h3>Calabresa Especial</h3>
-            <p>Calabresa, mussarela, cebola roxa, catupiry e orégano.</p>
-            <div class="product-bottom"><span class="price">R$ 54,00</span><button class="add" type="button" aria-label="Adicionar Calabresa Especial">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="especiais" data-search="pizza quatro queijos mussarela parmesao gorgonzola catupiry">
-          <img src="assets/pizzas/4-queijos.webp" alt="Pizza quatro queijos" loading="lazy">
-          <div>
-            <span class="product-chip">Cremosa</span>
-            <h3>Quatro Queijos</h3>
-            <p>Mussarela, parmesão, gorgonzola e catupiry cremoso.</p>
-            <div class="product-bottom"><span class="price">R$ 48,00</span><button class="add" type="button" aria-label="Adicionar Quatro Queijos">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="especiais" data-search="pizza frango cheddar bacon mussarela">
-          <img src="assets/pizzas/frango-cheddar-bacon.webp" alt="Pizza de frango com cheddar e bacon" loading="lazy">
-          <div>
-            <span class="product-chip">Especial</span>
-            <h3>Frango, Cheddar e Bacon</h3>
-            <p>Frango desfiado, cheddar cremoso, bacon crocante e mussarela.</p>
-            <div class="product-bottom"><span class="price">R$ 58,00</span><button class="add" type="button" aria-label="Adicionar Frango, Cheddar e Bacon">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="especiais" data-search="pizza california califórnia especial doce salgada frutas">
-          <img src="assets/pizzas/california.webp" alt="Pizza Califórnia" loading="lazy">
-          <div>
-            <span class="product-chip">Especial</span>
-            <h3>Pizza Califórnia</h3>
-            <p>Sabor especial para quem gosta de combinações marcantes e diferentes.</p>
-            <div class="product-bottom"><span class="price">R$ 55,00</span><button class="add" type="button" aria-label="Adicionar Pizza Califórnia">Adicionar</button></div>
-          </div>
-        </article>
-      </div>
+      <template v-for="group in groupedProducts" :key="group.value">
+        <h2 class="group-title" :id="group.value">{{ group.title }}</h2>
 
-      <h2 class="group-title" id="doces">Pizzas doces</h2>
-      <div class="products">
-        <article class="product-card" data-category="doces" data-search="pizza doce chocolate sobremesa chocolate raspas">
-          <img src="assets/pizzas/chocolate.webp" alt="Pizza doce de chocolate" loading="lazy">
-          <div>
-            <span class="product-chip">Doce</span>
-            <h3>Chocolate</h3>
-            <p>Massa da casa com cobertura cremosa de chocolate.</p>
-            <div class="product-bottom"><span class="price">R$ 39,00</span><button class="add" type="button" aria-label="Adicionar Pizza Chocolate">Adicionar</button></div>
-          </div>
-        </article>
-        <article class="product-card" data-category="doces" data-search="pizza doce leite banana canela sobremesa">
-          <img src="assets/pizzas/doce-de-leite-banana.webp" alt="Pizza doce de leite com banana" loading="lazy">
-          <div>
-            <span class="product-chip">Doce</span>
-            <h3>Doce de Leite com Banana</h3>
-            <p>Doce de leite, banana e canela para finalizar o pedido.</p>
-            <div class="product-bottom"><span class="price">R$ 41,00</span><button class="add" type="button" aria-label="Adicionar Doce de Leite com Banana">Adicionar</button></div>
-          </div>
-        </article>
-      </div>
+        <div class="products">
+          <article
+            v-for="product in group.products"
+            :key="product.id"
+            class="product-card"
+            :data-category="product.category"
+            :data-search="product.search"
+          >
+            <img
+              :src="product.image"
+              :alt="product.alt"
+              loading="lazy"
+            >
 
+            <div>
+              <span class="product-chip" :class="{ highlight: product.highlight }">
+                {{ product.chip }}
+              </span>
+
+              <h3>{{ product.name }}</h3>
+
+              <p>{{ product.description }}</p>
+
+              <div class="product-bottom">
+                <span class="price">{{ product.price }}</span>
+                <button
+                  class="add"
+                  type="button"
+                  :aria-label="`Adicionar ${product.name}`"
+                  @click="addToCart(product)"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </template>
     </section>
 
     <aside class="cart" aria-labelledby="cart-title">
       <h2 id="cart-title">Seu pedido</h2>
-      <p class="cart-empty" id="cart-empty">Nenhum item adicionado.</p>
-      <ul class="cart-list" id="cart-list"></ul>
-      <a class="btn btn-primary" id="finish-order" href="https://api.whatsapp.com/send?phone=5561981579252" target="_blank" rel="noopener noreferrer">Finalizar no WhatsApp</a>
+
+      <p class="cart-empty" id="cart-empty" v-if="order.length === 0">
+        Nenhum item adicionado.
+      </p>
+
+      <ul class="cart-list" id="cart-list" v-else>
+        <li v-for="(item, index) in order" :key="`${item.id}-${index}`">
+          {{ item.name }}
+        </li>
+      </ul>
+
+      <a
+        class="btn btn-primary"
+        id="finish-order"
+        :href="whatsappUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Finalizar no WhatsApp
+      </a>
     </aside>
   </div>
+</div>
 </main>
 
 <footer id="contato" class="footer">
@@ -217,6 +183,7 @@
   <button type="button" data-a11y="reset">Restaurar padrão</button>
 </section>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="assets/script.js"></script>
 </body>
 </html>

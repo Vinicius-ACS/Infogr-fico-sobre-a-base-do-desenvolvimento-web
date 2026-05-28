@@ -10,3 +10,7 @@
 /* Ajustes finais do cardápio com fotos reais da pizzaria */
 .menu-title{font-size:clamp(2.2rem,5vw,4.4rem);margin-top:10px}
 .product-chip{display:inline-flex;width:max-content;margin-bottom:8px;padding:5px 9px;border-radius:999px;background:#fff4ec;color:var(--brown);border:1px solid var(--line);font-size:.72rem;font-weight:900;letter-spacing:.01em}.product-chip.highlight{background:var(--red);border-color:var(--red);color:#fff}.product-card{overflow:hidden}.product-card img{transition:transform .25s ease}.product-card:hover img{transform:scale(1.035)}.products + .group-title{margin-top:34px}.cart-list li{padding:10px 0;border-bottom:1px solid var(--line)}.cart .btn{width:100%;margin-top:10px}.restaurant-panel .lead{margin-bottom:0}.search-card input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(215,25,32,.10)}@media(min-width:980px){.product-card{grid-template-columns:150px 1fr}.product-card img{width:150px;height:150px}.product-card p{min-height:44px}}@media(max-width:420px){.product-card img{height:240px}}
+
+[v-cloak] {
+  display: none;
+}

@@ -4,7 +4,7 @@ Site Original : <a href="https://oreidapizzabsb.ola.click/">O rei da pizza</a>
 
 Melhoria do site institucional e cardápio digital desenvolvido para a pizzaria **O Rei da Pizza - Asa Norte**, com foco em apresentação moderna, navegação simples, acessibilidade, semântica HTML e boa experiência para clientes em dispositivos móveis, tablets e desktop.
 
-O projeto foi desenvolvido em **HTML, CSS e JavaScript puro**, sem dependência de frameworks, com a página inicial separada da página de cardápio.
+O projeto foi desenvolvido em HTML5, CSS3, JavaScript e Vue.js, com integração progressiva do framework na página de cardápio. A página inicial permanece em HTML, CSS e JavaScript tradicional, enquanto o Vue.js é utilizado no cardápio para controlar busca, filtros, renderização dos produtos e montagem do pedido.
 
 ---
 
@@ -224,6 +224,21 @@ Recursos implementados:
 > Observação: o projeto segue boas práticas de acessibilidade e está alinhado aos requisitos da atividade. Uma validação 100% oficial de acessibilidade exigiria auditoria técnica com ferramentas especializadas e testes manuais com leitores de tela.
 
 ---
+## Integração com Vue.js
+
+O Vue.js foi integrado de forma progressiva na página `products.html`, sem necessidade de criação de projeto com Node.js ou instalação de dependências.
+
+A integração foi feita por CDN, com o objetivo de demonstrar noções iniciais de framework frontend.
+
+Recursos controlados pelo Vue.js:
+
+* Renderização dinâmica dos cards de pizzas;
+* Busca por nome, descrição e ingredientes;
+* Filtro por categorias;
+* Controle do pedido;
+* Atualização dinâmica do link de finalização pelo WhatsApp;
+* Uso de `v-model`, `v-for`, eventos com `@click` e propriedades computadas.
+---
 
 ## Tecnologias utilizadas
 
@@ -235,6 +250,7 @@ Recursos implementados:
 - Design responsivo;
 - Git;
 - GitHub.
+- Vue.js;
 
 ---
 
